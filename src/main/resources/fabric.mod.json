@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "viacombatium",
+  "version": "${version}",
+  "name": "ViaCombatium",
+  "description": "",
+  "authors": [
+    "NotInfinityy"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/viacombatium/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.nexia.viacombatium.ViaCombatium"
+    ]
+  },
+  "mixins": [
+    "viacombatium.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": ["1.16.3-combat.8.c", "1.16.2-1.16.combat-6"]
+  }
+}
