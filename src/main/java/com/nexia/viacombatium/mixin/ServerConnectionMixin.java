@@ -1,13 +1,11 @@
 package com.nexia.viacombatium.mixin;
 
-import com.nexia.viacombatium.ViaCombatium;
-import com.nexia.viacombatium.impl.CustomVLPipeline;
+import com.nexia.viacombatium.impl.ViaCombatiumVLPipeline;
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
 import com.viaversion.viaversion.connection.UserConnectionImpl;
 import com.viaversion.viaversion.protocol.ProtocolPipelineImpl;
 import io.netty.channel.Channel;
-import net.fabricmc.loader.api.FabricLoader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,8 +21,7 @@ public class ServerConnectionMixin {
             UserConnection user = new UserConnectionImpl(channel);
             new ProtocolPipelineImpl(user);
 
-            channel.pipeline().addLast(new CustomVLPipeline(user, ProtocolVersion.getProtocol(803)));
-            System.out.println("initialized!11");
+            channel.pipeline().addLast(new ViaCombatiumVLPipeline(user, ProtocolVersion.getProtocol(803)));
         }
     }
 }

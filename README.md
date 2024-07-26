@@ -15,5 +15,5 @@ Fabric implementation of ViaVersion for 8c servers. Allows the latest vanilla cl
 
 ### Build
 - Clone the repository
-    - `git clone https://github.com/nexia-cts/ViaCombatTest`
+    - `git clone https://github.com/nexia-cts/ViaCombatium`
 - Run `./gradlew build`
