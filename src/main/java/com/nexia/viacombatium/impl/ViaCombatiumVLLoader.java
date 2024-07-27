@@ -17,10 +17,12 @@ public class ViaCombatiumVLLoader extends VLLoader {
         Via.getManager().getProviders().use(VersionProvider.class, new BaseVersionProvider() {
             @Override
             public ProtocolVersion getClosestServerProtocol(UserConnection connection) throws Exception {
+                /*
                 NativeVersionProvider natProvider = Via.getManager().getProviders().get(NativeVersionProvider.class);
                 if (natProvider != null) {
                     return natProvider.getNativeServerProtocolVersion();
                 }
+                 */
                 return super.getClosestServerProtocol(connection);
             }
         });

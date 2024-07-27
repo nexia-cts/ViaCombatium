@@ -4,9 +4,8 @@
   "package": "com.nexia.viacombatium.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ConnectionMixin"
-  ],
-  "client": [
+    "ConnectionMixin",
+    "ServerConnectionMixin"
   ],
   "injectors": {
     "defaultRequire": 1
