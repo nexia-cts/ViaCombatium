@@ -1,15 +1,14 @@
 package com.nexia.viacombatium.impl;
 
 import com.viaversion.viaversion.api.connection.UserConnection;
-import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
 import io.netty.channel.ChannelHandler;
 import net.raphimc.netminecraft.constants.MCPipeline;
 import net.raphimc.vialoader.netty.VLPipeline;
 import net.raphimc.vialoader.netty.ViaCodec;
 
 public class ViaCombatiumVLPipeline extends VLPipeline {
-    public ViaCombatiumVLPipeline(UserConnection user, ProtocolVersion version) {
-        super(user, version);
+    public ViaCombatiumVLPipeline(UserConnection user) {
+        super(user);
     }
 
     @Override

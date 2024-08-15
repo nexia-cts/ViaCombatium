@@ -1,7 +1,5 @@
 package com.nexia.viacombatium.impl;
 
-import com.nexia.viacombatium.platform.NativeVersionProvider;
-import com.nexia.viacombatium.platform.ViaCombatiumNativeVersionProvider;
 import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.ViaAPI;
 import com.viaversion.viaversion.api.command.ViaCommandSender;
@@ -27,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class ViaVersionPlatformImpl implements ViaPlatform<UserConnection> {
-
     private static final Logger LOGGER = new JLoggerToSLF4J(LoggerFactory.getLogger("ViaVersion"));
 
     private final File dataFolder;
@@ -35,14 +32,9 @@ public class ViaVersionPlatformImpl implements ViaPlatform<UserConnection> {
     private final ViaAPI<UserConnection> api;
 
     public ViaVersionPlatformImpl(final File rootFolder) {
-        this.dataFolder = new File(rootFolder, "ViaLoader");
+        this.dataFolder = new File(rootFolder, "ViaCombatium");
         this.config = this.createConfig();
         this.api = this.createApi();
-    }
-
-    public void init() {
-        // We'll use it early for ViaInjector
-        installNativeVersionProvider();
     }
 
     @Override
@@ -52,7 +44,7 @@ public class ViaVersionPlatformImpl implements ViaPlatform<UserConnection> {
 
     @Override
     public String getPlatformName() {
-        return "ViaLoader";
+        return "ViaCombatium";
     }
 
     @Override
@@ -138,10 +130,6 @@ public class ViaVersionPlatformImpl implements ViaPlatform<UserConnection> {
     public void onReload() {
     }
 
-    protected void installNativeVersionProvider() {
-        Via.getManager().getProviders().use(NativeVersionProvider.class, new ViaCombatiumNativeVersionProvider());
-    }
-
     @Override
     public JsonObject getDump() {
         JsonObject platformSpecific = new JsonObject();
@@ -170,10 +158,6 @@ public class ViaVersionPlatformImpl implements ViaPlatform<UserConnection> {
         }).forEach(mods::add);
 
         platformSpecific.add("mods", mods);
-        NativeVersionProvider ver = Via.getManager().getProviders().get(NativeVersionProvider.class);
-        if (ver != null) {
-            platformSpecific.addProperty("native version", ver.getNativeServerProtocolVersion().getVersion());
-        }
         return platformSpecific;
     }
 

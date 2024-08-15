@@ -2,10 +2,13 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.nexia.viacombatium.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ConnectionMixin",
     "ServerConnectionMixin"
+  ],
+  "server": [
+    "MinecraftServerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
