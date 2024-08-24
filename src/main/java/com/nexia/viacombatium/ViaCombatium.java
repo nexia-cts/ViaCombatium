@@ -1,11 +1,10 @@
 package com.nexia.viacombatium;
 
 import com.nexia.viacombatium.impl.ViaCombatiumVLLoader;
+import com.viaversion.viaversion.api.Via;
 import net.fabricmc.api.ModInitializer;
 import net.raphimc.vialoader.ViaLoader;
-import net.raphimc.vialoader.impl.platform.ViaAprilFoolsPlatformImpl;
-import net.raphimc.vialoader.impl.platform.ViaBackwardsPlatformImpl;
-import net.raphimc.vialoader.impl.platform.ViaLegacyPlatformImpl;
+import net.raphimc.vialoader.impl.platform.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,11 +17,14 @@ public class ViaCombatium implements ModInitializer {
         ViaLoader.init(
                 null,
                 new ViaCombatiumVLLoader(),
-                null/*ViaInjector*/,
-                null/*ViaCommandHandler*/,
-                ViaAprilFoolsPlatformImpl::new,
+                null,
+                null,
                 ViaBackwardsPlatformImpl::new,
-                ViaLegacyPlatformImpl::new
+                ViaRewindPlatformImpl::new,
+                ViaLegacyPlatformImpl::new,
+                ViaAprilFoolsPlatformImpl::new
         );
+
+        Via.getManager().debugHandler().setEnabled(true);
     }
 }
